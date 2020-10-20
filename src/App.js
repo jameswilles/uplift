@@ -3,13 +3,13 @@ import './App.css';
 import routes from './routes';
 import Nav from './Components/Nav/Nav';
 
-function App() {
+const App = (props) => {
   return (
     <div className="App">
       <Nav />
       { routes }
     </div>
-  );
+    );
 }
 
 export default App;

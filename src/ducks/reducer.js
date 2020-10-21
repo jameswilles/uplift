@@ -1,5 +1,5 @@
 const initialState = {
-  user: {}
+  user: { }
 }
 
 const GET_USER = 'GET_USER',

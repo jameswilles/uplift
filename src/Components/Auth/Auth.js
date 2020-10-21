@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import connect from 'react-redux';
-// import {getUser} from '../../ducks/reducer';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import {getUser} from '../../ducks/reducer';
 
 const Auth = (props) => {
   const [username, setUsername] = useState('');
@@ -9,11 +9,23 @@ const Auth = (props) => {
   const [email, setEmail] = useState('');
   const [registerView, toggleRegister] = useState(false);
 
-  // useEffect(() => {
-  //   if(props.user.email){
-  //     props.history.push('/dash');
-  //   }
-  // }, [])
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  const handleRegister = () => {
+    axios.post('/api/register', {username, email, password})
+    .then(res => {
+      dispatch(getUser(res.data))
+      props.history.push('/dash')
+    })
+    .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    if(user.email){
+      props.history.push('/dash');
+    }
+  })
 
   return(
     <div>
@@ -29,7 +41,7 @@ const Auth = (props) => {
       <input value={password} onChange={e => setPassword(e.target.value)} />
       {registerView ? (
           <section>
-           <button> Register </button>
+           <button onClick={() => handleRegister()} > Register </button>
             <p> Already have an account? </p>
             <button onClick={() => toggleRegister(!registerView)} > Login Here </button>
           </section>

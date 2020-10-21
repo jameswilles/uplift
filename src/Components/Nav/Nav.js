@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { clearUser } from '../../ducks/reducer';
 
 class Nav extends Component {
+  componentDidMount() {
+    console.log(this.props)
+  }
+
+  handleLogout = () => {
+    axios.get('/api/logout')
+    .then(() => {
+        //clear the user from redux
+        this.props.clearUser();
+        // because the routes are functional components with 'useEffect's that push us around based on redux state, we don't need the authentication functions to push us to other routes.  Neat.
+    })
+    .catch(err => console.log(err))
+}
+
   render() {
     return(
       <div className='nav'>
@@ -11,13 +27,18 @@ class Nav extends Component {
             <section className='nav-links'>
               <Link to='/dash' className='link' > Home </Link>
               <Link to='/profile' className='link' > Profile </Link>
-              <Link to='/' className='link' > Logout </Link>
+              <button onClick={this.handleLogout}> Logout </button>
             </section>
           </div>) : null}
       </div>
     )
   }
 };
+
+// export statement bellow commented functional component attempt
+
+// I was trying to do this as a functional component, but couldn't get that to work with this.props.location.pathname
+// So I decided to just move on and make it a class component, which you see above.
 
 // const Nav = (props) => {
 //   const location = useLocation()
@@ -36,7 +57,6 @@ class Nav extends Component {
 // }
 
 
-// const mapStateToProps = reduxState => reduxState;
+const mapStateToProps = reduxState => reduxState;
 
-// export default connect(mapStateToProps)(withRouter(Nav));
-export default withRouter(Nav)
+export default connect(mapStateToProps, { clearUser })(withRouter(Nav));

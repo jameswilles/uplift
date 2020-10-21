@@ -16,9 +16,16 @@ const Auth = (props) => {
     axios.post('/api/register', {username, email, password})
     .then(res => {
       dispatch(getUser(res.data))
-      props.history.push('/dash')
     })
     .catch(err => console.log(err))
+  }
+
+  const handleLogin = () => {
+    axios.post('/api/login', {username, password})
+    .then(res => {
+      dispatch(getUser(res.data))
+  })
+  .catch(err => console.log(err));
   }
 
   useEffect(() => {
@@ -47,7 +54,7 @@ const Auth = (props) => {
           </section>
       ) : (
         <section>
-          <button> Login </button>
+          <button onClick={() => handleLogin()}> Login </button>
           <p> Need an account? </p>
           <button onClick={() => toggleRegister(!registerView)} > Register Here </button>
         </section>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import {getUser} from '../../ducks/reducer';
+import './Auth.scss';
 
 const Auth = (props) => {
   const [username, setUsername] = useState('');
@@ -35,30 +36,32 @@ const Auth = (props) => {
   })
 
   return(
-    <div>
-      <p> Username: </p>
+    <div className='auth-page'>
+      <section className='auth-box'>
+      <p className='auth-main-text'> Username: </p>
       <input value={username} onChange={e => setUsername(e.target.value)} />
       {registerView ? (
         <section>
-          <p> Email: </p>
+          <p className='auth-main-text'> Email: </p>
           <input value={email} onChange={e => setEmail(e.target.value)} />
         </section>
       ) : null}
-      <p> Password: </p>
+      <p className='auth-main-text'> Password: </p>
       <input value={password} onChange={e => setPassword(e.target.value)} />
       {registerView ? (
-          <section>
+          <section className='auth-reg-log'>
            <button onClick={() => handleRegister()} > Register </button>
-            <p> Already have an account? </p>
+            <p className='auth-help-text'> Already have an account? </p>
             <button onClick={() => toggleRegister(!registerView)} > Login Here </button>
           </section>
       ) : (
-        <section>
+        <section className='auth-reg-log'>
           <button onClick={() => handleLogin()}> Login </button>
-          <p> Need an account? </p>
+          <p className='auth-help-text'> Need an account? </p>
           <button onClick={() => toggleRegister(!registerView)} > Register Here </button>
         </section>
       )}
+      </section>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { clearUser } from '../../ducks/reducer';
+import './nav.scss'
 
 class Nav extends Component {
   componentDidMount() {
@@ -21,15 +22,15 @@ class Nav extends Component {
 
   render() {
     return(
-      <div className='nav'>
+      <div>
         {this.props.location.pathname !== '/'
-        ? (<div>
+        ? (<div className='nav'>
             <section className='nav-links'>
               <Link to='/dash' className='link' > Home </Link>
               <Link to='/profile' className='link' > Profile </Link>
-              <button onClick={this.handleLogout}> Logout </button>
+              <button className='link' onClick={this.handleLogout}> Logout </button>
             </section>
-          </div>) : null}
+          </div>) : (<div className='empty'></div>)}
       </div>
     )
   }

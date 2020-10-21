@@ -43,4 +43,4 @@ app.get('/api/logout', authCtrl.logout);
 
 // listen
 
-app.listen(port, () => console.log(`Uplifting port ${port}`))
+app.listen(port, () => console.log(`Giving free hugs on port ${port}`))

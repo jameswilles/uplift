@@ -15,10 +15,10 @@ module.exports = {
     .catch(err => res.status(500).send(err))
   },
   getUserPosts: (req, res) => {
-    const {id} = req.params,
+    const {user_id} = req.params,
            db = req.app.get('db');
 
-    db.posts.get_user_posts(id)
+    db.posts.get_user_posts(user_id)
     .then(posts => res.status(200).send(posts))
     .catch(err => res.status(500).send(err));
   },

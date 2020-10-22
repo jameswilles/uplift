@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { clearUser } from '../../ducks/reducer';
 import './nav.scss'
 
 class Nav extends Component {
-  componentDidMount() {
-    console.log(this.props)
-  }
+  // componentDidMount() {
+  //   console.log(this.props)
+  // }
 
   handleLogout = () => {
     axios.get('/api/logout')

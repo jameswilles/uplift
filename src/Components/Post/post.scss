@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+$first-color: #ff9c39;
+$second-color: #ff70a6;
+$third-color: #ffd670;
+$gradient: linear-gradient(to bottom right, $first-color, $second-color);
+
+.post-box {
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 500px;
+
+  header {
+    background-image: $gradient;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    height: 25px;
+    padding: 0px 20px;
+    border-bottom: 2px solid black;
+  }
+  section {
+    height: 75px;
+    padding: 10px;
+  }
+}

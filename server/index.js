@@ -40,6 +40,11 @@ app.post('/api/login', authCtrl.login);
 app.get('/api/logout', authCtrl.logout);
 
 // main endpoints
+app.post('/api/post', mainCtrl.createPost);
+app.get('/api/posts', mainCtrl.getAllPosts);
+app.get('/api/posts/:id', mainCtrl.getUserPosts);
+app.put('/api/post/:id', mainCtrl.editPost);
+app.delete('/api/post/:id', mainCtrl.deletePost);
 
 // listen
 

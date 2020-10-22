@@ -18,19 +18,28 @@ class Nav extends Component {
         // because the routes are functional components with 'useEffect's that push us around based on redux state, we don't need the authentication functions to push us to other routes.  Neat.
     })
     .catch(err => console.log(err))
-}
+  }
+
+  toHome = () => {
+    this.props.history.push('/dash')
+  }
+
+  toProfile = () => {
+    this.props.history.push('/profile')
+  }
 
   render() {
     return(
       <div>
         {this.props.location.pathname !== '/'
         ? (<div className='nav'>
-            <section className='nav-links'>
-              <Link to='/dash' className='link' > Home </Link>
-              <Link to='/profile' className='link' > Profile </Link>
-              <button className='link' onClick={this.handleLogout}> Logout </button>
+            <h2> Uplift </h2>
+            <section>
+              <button onClick={() => this.toHome()}> Home </button>
+              <button onClick={() => this.toProfile()}> Profile</button>
+              <button onClick={this.handleLogout}> Logout </button>
             </section>
-          </div>) : (<div className='empty'></div>)}
+          </div>) : null}
       </div>
     )
   }

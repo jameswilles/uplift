@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+$first-color: #ff9c39;
+$second-color: #ff70a6;
+$third-color: #ffd670;
+$gradient: linear-gradient(to bottom right, $first-color, $second-color);
+
+.nav {
+  height: 55px;
+  background-image: $gradient;
+  border-bottom: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 30px;
+
+  button {
+    background-color: transparent;
+    height: 30px;
+    width: 100px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 20px;
+    margin: 5px;
+  }
+
+}

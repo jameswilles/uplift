@@ -8,9 +8,7 @@
   align-items: center;
 }
 
-$first-color: #ff9c39;
-$second-color: #ff70a6;
-$third-color: #ffd670;
+@import './base.scss';
 
 .auth-page {
   @extend %flexbox-center;

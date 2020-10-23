@@ -2,10 +2,7 @@
   box-sizing: border-box;
 }
 
-$first-color: #ff9c39;
-$second-color: #ff70a6;
-$third-color: #ffd670;
-$gradient: linear-gradient(to bottom right, $first-color, $second-color);
+@import './base.scss';
 
 .nav {
   height: 55px;

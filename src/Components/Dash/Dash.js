@@ -10,31 +10,35 @@ const Dash = (props) => {
     <Post key={i} post={post} />
   ))
   const user = useSelector(state => state.user)
+  const [postInput, handlePostInput] = useState('')
 
   useEffect(() => {
     if(!user.email){
       props.history.push('/');
     }
-  })
-  
-  useEffect(() => {
-    let source = axios.CancelToken.source()
+  }, [user])
 
-    try {
-      axios.get('/api/posts', {cancelToken: source.token})
+  useEffect(() => {
+    axios.get('/api/posts')
       .then(res => handlePosts(res.data))
       .catch(err => console.log(err))
-    } catch(error) {
-
-    } 
-
-    return () => {
-      source.cancel()
-    }
-  }, [posts])
+  }, [])
 
   return(
     <div className='dashboard'>
+      <div className ='new-post-box'>
+        <header>
+          <p> Share Something New! </p>
+          <button> Post </button>
+          <button> Cancel </button>
+        </header>
+        <section>
+          <input></input>
+        </section>
+      </div>
+      <section className='text-container'>
+        <p> Posts: </p>
+      </section>
       {mappedPosts}
     </div>
   )

@@ -33,7 +33,7 @@ const Auth = (props) => {
     if(user.email){
       props.history.push('/dash');
     }
-  })
+  }, [user])
 
   return(
     <div className='auth-page'>

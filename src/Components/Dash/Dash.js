@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Post from '../Post/Post';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import './dash.scss';
+import '../../styles/dash.scss';
 
 const Dash = (props) => {
   const [posts, handlePosts] = useState([])
@@ -22,7 +22,7 @@ const Dash = (props) => {
     if(!user.email){
       props.history.push('/');
     }
-  }, [user])
+  }, [user, props.history])
 
   useEffect(() => {
     getPosts()
@@ -42,10 +42,13 @@ const Dash = (props) => {
       <div className ='new-post-box'>
         <header>
           <p> Share Something New! </p>
-          <button onClick={() => createPost()}> Post </button>
-          <button onClick={() => handlePostInput('')}> Cancel </button>
+          <section className='buttons'>
+            <button onClick={() => createPost()}> &#10003; </button>
+            <button onClick={() => handlePostInput('')}> 	&#10007; </button>
+          </section>
         </header>
-        <section>
+        <section className='input-box'>
+          <p> Type Here: </p>
           <input
             value={postInput}
             onChange={e => handlePostInput(e.target.value)} ></input>

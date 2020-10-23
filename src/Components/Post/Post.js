@@ -1,5 +1,5 @@
 import React from 'react';
-import './post.scss';
+import '../../styles/post.scss';
 
 const Post = (props) => {
   return(

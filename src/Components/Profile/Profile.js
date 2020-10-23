@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Post from '../Post/Post';
+import '../../styles/profile.scss';
 
 const Profile = (props) => {
   const user = useSelector(state => state.user)
@@ -14,7 +15,7 @@ const Profile = (props) => {
     if(!user.email){
       props.history.push('/');
     }
-  }, [user])
+  }, [user, props.history])
 
 
   useEffect(() => {

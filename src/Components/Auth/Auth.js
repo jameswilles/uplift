@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import {getUser} from '../../ducks/reducer';
-import './Auth.scss';
+import '../../styles/Auth.scss';
 
 const Auth = (props) => {
   const [username, setUsername] = useState('');
@@ -33,7 +33,7 @@ const Auth = (props) => {
     if(user.email){
       props.history.push('/dash');
     }
-  }, [user])
+  }, [user, props.history])
 
   return(
     <div className='auth-page'>

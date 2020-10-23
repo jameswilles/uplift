@@ -25,7 +25,7 @@ const Dash = (props) => {
       .then(res => handlePosts(res.data))
       .catch(err => console.log(err))
     } catch(error) {
-      
+
     } 
 
     return () => {

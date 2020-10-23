@@ -12,6 +12,12 @@ const Dash = (props) => {
   const user = useSelector(state => state.user)
   const [postInput, handlePostInput] = useState('')
 
+  const getPosts = () => {
+    axios.get('/api/posts')
+      .then(res => handlePosts(res.data))
+      .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     if(!user.email){
       props.history.push('/');
@@ -19,21 +25,30 @@ const Dash = (props) => {
   }, [user])
 
   useEffect(() => {
-    axios.get('/api/posts')
-      .then(res => handlePosts(res.data))
-      .catch(err => console.log(err))
+    getPosts()
   }, [])
+
+  const createPost = () => {
+    axios.post('/api/post', {id: user.user_id, content: postInput})
+    .then(() => {
+      getPosts()
+      handlePostInput('')
+    })
+    .catch(err => console.log(err))
+  }
 
   return(
     <div className='dashboard'>
       <div className ='new-post-box'>
         <header>
           <p> Share Something New! </p>
-          <button> Post </button>
-          <button> Cancel </button>
+          <button onClick={() => createPost()}> Post </button>
+          <button onClick={() => handlePostInput('')}> Cancel </button>
         </header>
         <section>
-          <input></input>
+          <input
+            value={postInput}
+            onChange={e => handlePostInput(e.target.value)} ></input>
         </section>
       </div>
       <section className='text-container'>

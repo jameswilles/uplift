@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { getPost } from '../../ducks/reducers/reducer';
 import Post from '../Post/Post';
 import '../../styles/profile.scss';
 
 const Profile = (props) => {
   const user = useSelector(state => state.user)
+  const post = useSelector(state => state.post)
   const [userPosts, handleUserPosts] = useState([])
   const mappedUserPosts = userPosts.map((post, i) => (
     <div key={i}>
@@ -13,6 +15,7 @@ const Profile = (props) => {
       <button onClick={() => editPost(post)}> Edit </button> <button onClick={() => deletePost(post.post_id)}> Delete </button>
     </div>
   ))
+  const dispatch = useDispatch()
 
   const getUserPosts = () => {
     const { user_id } = user
@@ -23,6 +26,8 @@ const Profile = (props) => {
 
   const editPost = (postObj) => {
     console.log(postObj)
+    dispatch(getPost(postObj))
+    props.history.push('/edit')
   }
 
   const deletePost = (id) => {

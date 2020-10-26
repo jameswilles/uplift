@@ -1,7 +1,6 @@
-import Axios from 'axios';
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
 
 const EditPost = (props) => {
   const user = useSelector(state => state.user)

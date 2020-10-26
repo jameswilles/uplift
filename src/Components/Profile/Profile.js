@@ -7,7 +7,6 @@ import '../../styles/profile.scss';
 
 const Profile = (props) => {
   const user = useSelector(state => state.user)
-  const post = useSelector(state => state.post)
   const [userPosts, handleUserPosts] = useState([])
   const mappedUserPosts = userPosts.map((post, i) => (
     <div key={i}>

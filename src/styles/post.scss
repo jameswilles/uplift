@@ -5,15 +5,12 @@
 @import './base.scss';
 
 .post-box {
-  border: 2px solid black;
-  border-radius: 15px;
+  @extend %basic-border;
   width: 500px;
 
   header {
+    @include flex(left, center, row);
     background-image: $gradient;
-    display: flex;
-    align-items: center;
-    justify-content: left;
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
     height: 25px;

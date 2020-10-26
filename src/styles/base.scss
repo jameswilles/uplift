@@ -2,3 +2,15 @@ $first-color: #ff9c39;
 $second-color: #ff70a6;
 $third-color: #ffd670;
 $gradient: linear-gradient(to bottom right, $first-color, $second-color);
+
+%basic-border {
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+@mixin flex ($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}

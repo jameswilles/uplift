@@ -8,9 +8,7 @@
   height: 55px;
   background-image: $gradient;
   border-bottom: 2px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex(space-between, center, row);
   padding: 0px 30px;
 
   button {
@@ -18,8 +16,7 @@
     height: 30px;
     width: 100px;
     color: black;
-    border: 2px solid black;
-    border-radius: 15px;
+    @extend %basic-border;
     font-size: 20px;
     margin: 5px;
   }

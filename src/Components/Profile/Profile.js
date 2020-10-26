@@ -10,7 +10,7 @@ const Profile = (props) => {
   const mappedUserPosts = userPosts.map((post, i) => (
     <div key={i}>
       <Post post={post} />
-      <button> Edit </button> <button onClick={() => deletePost(post.post_id)}> Delete </button>
+      <button onClick={() => editPost(post)}> Edit </button> <button onClick={() => deletePost(post.post_id)}> Delete </button>
     </div>
   ))
 
@@ -19,6 +19,10 @@ const Profile = (props) => {
     axios.get(`/api/posts/${user_id}`)
     .then(res => handleUserPosts(res.data))
     .catch(err => console.log(err))
+  }
+
+  const editPost = (postObj) => {
+    console.log(postObj)
   }
 
   const deletePost = (id) => {
@@ -41,7 +45,7 @@ const Profile = (props) => {
   }, [])
 
   return(
-    <div>
+    <div className='profile'>
       Profile
       {mappedUserPosts}
     </div>

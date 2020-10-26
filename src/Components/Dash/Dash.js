@@ -39,7 +39,7 @@ const Dash = (props) => {
 
   return(
     <div className='dashboard'>
-      <div className ='new-post-box'>
+      <div className='new-post-box'>
         <header>
           <p> Share Something New! </p>
           <section className='buttons'>
@@ -51,7 +51,7 @@ const Dash = (props) => {
           <p> Type Here: </p>
           <input
             value={postInput}
-            onChange={e => handlePostInput(e.target.value)} ></input>
+            onChange={e => handlePostInput(e.target.value)} />
         </section>
       </div>
       <section className='text-container'>

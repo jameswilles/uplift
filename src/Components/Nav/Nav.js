@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { clearUser } from '../../ducks/reducer';
+import { clearUser } from '../../ducks/reducers/reducer';
 import '../../styles/nav.scss';
 
 class Nav extends Component {

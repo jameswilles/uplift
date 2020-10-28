@@ -10,7 +10,7 @@ const Profile = (props) => {
   const [userPosts, handleUserPosts] = useState([])
   const mappedUserPosts = userPosts.map((post, i) => (
     <div key={i}>
-      <Post post={post} />
+      <Post post={post} user={user} />
       <button onClick={() => editPost(post)}> Edit </button> <button onClick={() => deletePost(post.post_id)}> Delete </button>
     </div>
   ))

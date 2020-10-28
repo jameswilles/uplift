@@ -6,10 +6,10 @@ import '../../styles/dash.scss';
 
 const Dash = (props) => {
   const [posts, handlePosts] = useState([])
-  const mappedPosts = posts.map((post, i) => (
-    <Post key={i} post={post} />
-  ))
   const user = useSelector(state => state.user)
+  const mappedPosts = posts.map((post, i) => (
+    <Post key={i} post={post} user={user} />
+  ))
   const [postInput, handlePostInput] = useState('')
 
   const getPosts = () => {

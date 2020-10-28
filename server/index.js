@@ -6,7 +6,8 @@ session = require('express-session'),
 massive = require('massive')
 // require controllers
 const authCtrl = require('./controllers/authController'),
-      mainCtrl = require('./controllers/mainController');
+      mainCtrl = require('./controllers/mainController'),
+      likeCtrl = require('./controllers/likeController');
 
 // destructure environmental variables
 
@@ -45,6 +46,16 @@ app.get('/api/posts', mainCtrl.getAllPosts);
 app.get('/api/posts/:id', mainCtrl.getUserPosts);
 app.put('/api/post/:id', mainCtrl.editPost);
 app.delete('/api/post/:id', mainCtrl.deletePost);
+
+// like endpoints
+
+app.post('/api/like', likeCtrl.likePost);
+app.post('/api/unlike', likeCtrl.unlikePost);
+// I'm not entirely sure that this should be a post request
+// I'm thinking it might be a delete request instead, but
+// it uses req.body, which I'm not sure a delete request gets...
+app.get('/api/post-likes/:id', likeCtrl.getPostLikes);
+app.get('/api/liked-posts/:id', likeCtrl.getLikedPosts);
 
 // listen
 

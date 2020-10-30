@@ -49,8 +49,8 @@ app.delete('/api/post/:id', mainCtrl.deletePost);
 
 // like endpoints
 
-app.post('/api/like', likeCtrl.likePost);
-app.post('/api/unlike', likeCtrl.unlikePost);
+app.post('/api/like/:id', likeCtrl.likePost);
+app.post('/api/unlike/:id', likeCtrl.unlikePost);
 // I'm not entirely sure that this should be a post request
 // I'm thinking it might be a delete request instead, but
 // it uses req.body, which I'm not sure a delete request gets...

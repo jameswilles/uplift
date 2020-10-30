@@ -8,7 +8,7 @@
   @extend %basic-border;
   width: 500px;
 
-  header {
+  .post-header {
     @include flex(left, center, row);
     background-image: $gradient;
     border-top-left-radius: 13px;
@@ -21,4 +21,8 @@
     height: 75px;
     padding: 10px;
   }
+}
+
+.liked {
+  color: $third-color;
 }

@@ -5,12 +5,25 @@ import '../../styles/post.scss';
 const Post = (props) => {
   const [likesArr, handleLikesArr] = useState([])
   const [liked, handleLiked] = useState(false)
+  const { user_id } = props.user
 
   const getPostLikes = () => {
     axios.get(`api/post-likes/${props.post.post_id}`)
     .then(res => {
       handleLikesArr(res.data)
     })
+    .catch(err => console.log(err))
+  }
+
+  const likePost = () => {
+    axios.post(`/api/like/${props.post.post_id}`, {user_id})
+    .then(res => handleLikesArr(res.data))
+    .catch(err => console.log(err))
+  }
+
+  const unlikePost = () => {
+    axios.post(`/api/unlike/${props.post.post_id}`, {user_id})
+    .then(res => handleLikesArr(res.data))
     .catch(err => console.log(err))
   }
 
@@ -28,18 +41,14 @@ const Post = (props) => {
       }
   }, [likesArr])
 
-  useEffect(() => {
-    console.log(liked, 'should be true')
-  }, [liked])
-
   return(
     <div className='post-box'>
-      <header> 
+      <div className='post-header'> 
         {props.post.username} 
-        {liked ? <button className='like-button liked' > &#9825; </button> 
-          : <button className='like-button not-liked' > &#9825; </button>} 
+        {liked ? <button onClick={() => unlikePost()} className='like-button liked' > &#9829; </button> 
+          : <button onClick={() => likePost()} className='like-button not-liked' > &#9829; </button>} 
         {likesArr.length} 
-      </header>
+      </div>
       <section> {props.post.content} </section>
     </div>
   )

@@ -17,20 +17,23 @@ module.exports = {
   },
   likePost: (req, res) => {
     const {id} = req.params,
-    user_id = req.body,
+    { user_id } = req.body,
     db = req.app.get('db')
 
+    console.log(id, user_id)
+
     db.posts.likes.like_post(id, user_id)
-    .then(res.sendStatus(200))
-    .catch(err => res.status(500).send(err))
+    .then(likes => res.status(200).send(likes))
+    // .catch(err => res.status(500).send(err))
+    // so for some reason, both the .catch and .then are firing, sending both a 200 and 500 status code.  Removing the .catch didn't work...
   },
   unlikePost: (req, res) => {
     const {id} = req.params,
-    user_id = req.body,
+    {user_id} = req.body,
     db = req.app.get('db')
 
     db.posts.likes.unlike_post(id, user_id)
-    .then(res.sendStatus(200))
+    .then(likes => res.status(200).send(likes))
     .catch(err => res.status(500).send(err))
   }
 }

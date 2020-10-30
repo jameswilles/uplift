@@ -3,7 +3,8 @@ require('dotenv').config()
 // require packages
 const express = require('express'),
 session = require('express-session'),
-massive = require('massive')
+massive = require('massive'),
+path = require('path')
 // require controllers
 const authCtrl = require('./controllers/authController'),
       mainCtrl = require('./controllers/mainController'),
@@ -56,6 +57,14 @@ app.post('/api/unlike/:id', likeCtrl.unlikePost);
 // it uses req.body, which I'm not sure a delete request gets...
 app.get('/api/post-likes/:id', likeCtrl.getPostLikes);
 app.get('/api/liked-posts/:id', likeCtrl.getLikedPosts);
+
+// for hosting
+
+app.use(express.static(__dirname + '/../build'))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 // listen
 

@@ -26,3 +26,15 @@
 .liked {
   color: $third-color;
 }
+
+@media(max-width: 519px) {
+  .post-box {
+    width: 350px;
+  }
+}
+
+@media(min-width: 1000) {
+  .post-box {
+    width: 980px;
+  }
+}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import '../../styles/edit.scss';
 
 const EditPost = (props) => {
   const user = useSelector(state => state.user)
@@ -22,7 +23,7 @@ const EditPost = (props) => {
   }
   
   return(
-    <div>
+    <div className='edit-post-box'>
       <header>
         <section className='buttons'>
           <button onClick={() => {edit()}}> &#10003; </button>

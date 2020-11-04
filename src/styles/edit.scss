@@ -1,0 +1,40 @@
+@import './base.scss';
+
+.edit-post-box {
+  @extend %basic-border;
+  width: 500px;
+
+  header {
+    background-image: $gradient;
+    @include flex(space-between, center, row);
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    height: 40px;
+    padding: 0px 20px;
+    border-bottom: 2px solid black;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+  .input-box {
+    @include flex (center, center, row);
+    border: none;
+    width: 100%;
+    height: 50px;
+
+    input {
+      border: none;
+      border-bottom: 2px solid black;
+      height: 25px;
+      font-size: 15px;
+      width: 300px;
+      margin: 0px 10px;
+    }
+
+    input:focus {
+      outline: none;
+    }
+  }
+}
